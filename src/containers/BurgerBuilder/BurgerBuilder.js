@@ -8,7 +8,7 @@ class BurgerBuilder extends Component {
     //     this.state = {...}
     // }
     state = {
-        ingridients: {
+        ingredients: {
             salad: 1,
             bacon: 1,
             cheese: 2,
@@ -19,7 +19,7 @@ class BurgerBuilder extends Component {
     render() {
         return(
             <Aux>
-                <Burger ingridients={this.state.ingridients}/>
+                <Burger ingredients={this.state.ingredients}/>
                 <div>Build Controls</div>
             </Aux>
         );
