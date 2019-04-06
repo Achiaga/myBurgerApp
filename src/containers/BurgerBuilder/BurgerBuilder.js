@@ -4,6 +4,7 @@ import Burger from "../../components/Burger/Burger"
 import BuildControls from "../../components/Burger/BuildControls/BuildControls"
 import Modal from "../../components/UI/Modal/Modal"
 import OrderSummery from "../../components/Burger/OrderSummary/OrderSummery"
+import Background from "../../components/UI/Background/Background"
 
 const   INGREDIENT_PRICES = {
     salad: 0.5,
@@ -80,6 +81,14 @@ class BurgerBuilder extends Component {
         this.setState({purchasing: true})
     }
 
+    purchaseCancelHandler = () => {
+        this.setState({purchasing: false})
+    }
+
+    purchaseContinueHandler = () => {
+        alert("You are continuing!")
+    }
+
     render() {
         const disabledInfo = {
             ...this.state.ingredients
@@ -89,17 +98,21 @@ class BurgerBuilder extends Component {
         }
         return(
             <Aux>
-                <Modal show={this.state.purchasing}>
-                    <OrderSummery ingredients={this.state.ingredients}/>
+                <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+                    <OrderSummery 
+                    ingredients={this.state.ingredients} 
+                    purchaseCancelled={this.purchaseCancelHandler}
+                    purchaseContinued={this.purchaseContinueHandler}/>
                 </Modal>
-                
                 <Burger ingredients={this.state.ingredients}/>
-                <BuildControls ingredientAdded={this.addIngredientHandler}
-                 ingredientDeleted={this.deleteIngredientHandler}
-                 disabled ={disabledInfo}
-                 ordered={this.purchaseHandler}
-                 price={this.state.totalPrice}
-                 purchasable={this.state.purchasable} />
+                <Background >
+                    <BuildControls ingredientAdded={this.addIngredientHandler}
+                    ingredientDeleted={this.deleteIngredientHandler}
+                    disabled ={disabledInfo}
+                    ordered={this.purchaseHandler}
+                    price={this.state.totalPrice}
+                    purchasable={this.state.purchasable} />
+                </Background>
             </Aux>
         );
     }
