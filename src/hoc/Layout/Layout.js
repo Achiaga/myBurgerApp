@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import Aux from "../../hoc/Aux";
+import Aux from "../Aux/Aux";
 import classes from "./Layout.module.css"
-import Toolbar from "../Navigation/Toolbar/Toolbar"
-import SideDrawer from "../Navigation/SideDrawer/SideDrawer"
+import Toolbar from "../../components/Navigation/Toolbar/Toolbar"
+import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer"
 // We need to creat an Aux or array or in a div or something bc we can not use jsx elements in js
 class Layout extends Component {
     state = {

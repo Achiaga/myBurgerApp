@@ -1,18 +1,23 @@
-import React from 'react';
-import Aux from "../../../hoc/Aux"
+import React, {Component} from 'react';
+import Aux from "../../../hoc/Aux/Aux"
 import Button from "../../UI/Button/Button"
 
 
-const orderSummery = (props) => {
-    // ingredietns are in a object format and not in an array --> Problem
-    const ingredientSummery = Object.keys(props.ingredients).map(igKey => {
+class OrderSummery extends Component{
+    // This could be a functional component. Doen't have to be a class
+    componentWillUpdate(){
+        console.log("[OrderSummery] WillUpdate")
+    }
+
+    render(){
+        const ingredientSummery = Object.keys(this.props.ingredients).map(igKey => {
         return (
             <li key={igKey}>
-                <span style={{textTransform: "capitalize"}}>{igKey}</span>: {props.ingredients[igKey]}
+                <span style={{textTransform: "capitalize"}}>{igKey}</span>: {this.props.ingredients[igKey]}
             </li>)
     });
 
-    return(
+        return (
         <Aux>
             <h3>Your Order</h3>
             <p>Delicious Burger with the following ingredients: </p>
@@ -20,11 +25,12 @@ const orderSummery = (props) => {
                 {ingredientSummery}
             </ul>
             <p>Continue To Chekout?</p>
-            <p><strong>Total Price: ${props.price.toFixed(2)} </strong></p>
-            <Button btnType="Success" clicked={props.purchaseContinued}>CONTINUE</Button>
-            <Button btnType="Danger" clicked={props.purchaseCancelled}>CANCEL</Button>
+            <p><strong>Total Price: ${this.props.price.toFixed(2)} </strong></p>
+            <Button btnType="Success" clicked={this.props.purchaseContinued}>CONTINUE</Button>
+            <Button btnType="Danger" clicked={this.props.purchaseCancelled}>CANCEL</Button>
         </Aux>
-    );
-};
- 
-export default orderSummery;
+        )
+    }
+}
+
+export default OrderSummery;
