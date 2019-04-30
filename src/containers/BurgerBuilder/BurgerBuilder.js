@@ -30,6 +30,7 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount () {
+        console.log(this.props)
         axios.get("https://react-burger-app-maker.firebaseio.com/ingredients.json")
             .then(response => {
                 this.setState({ingredients: response.data})
@@ -96,29 +97,30 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         // alert("You are continuing!")
-        this.setState({loading: true})
-        const order = {
-            ingredients: this.state.ingredients,
-            price : this.state.totalPrice,
-            customer: {
-                name: "Max Power",
-                adress: {
-                    street: "NoName Street",
-                    zip: "09005",
-                    country: "South Korea"
-                },
-                email: "asdf@gmail.com"
-            },
-            deliveryMethod: "fastest"
-        }
-        axios.post("/orders.json", order)
-            .then(response => {
-                this.setState({loading: false, purchasing: false})
-                console.log(response)
-            })
-            .catch(error => 
-                this.setState({loading: false, purchasing: false})    
-            );
+        // this.setState({loading: true})
+        // const order = {
+        //     ingredients: this.state.ingredients,
+        //     price : this.state.totalPrice,
+        //     customer: {
+        //         name: "Max Power",
+        //         adress: {
+        //             street: "NoName Street",
+        //             zip: "09005",
+        //             country: "South Korea"
+        //         },
+        //         email: "asdf@gmail.com"
+        //     },
+        //     deliveryMethod: "fastest"
+        // }
+        // axios.post("/orders.json", order)
+        //     .then(response => {
+        //         this.setState({loading: false, purchasing: false})
+        //         console.log(response)
+        //     })
+        //     .catch(error => 
+        //         this.setState({loading: false, purchasing: false})    
+        //     );
+        this.props.history.push("/checkout")
      }
 
     render() {
