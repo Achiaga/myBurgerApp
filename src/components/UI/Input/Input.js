@@ -5,7 +5,7 @@ const input = (props) => {
     // Si ponemos return debe ir entre corchetes y es para poder escribir ejx
     let inputElement = null;
 
-    switch(props.inputType){
+    switch(props.inputtype){
         case("input"):
             inputElement = <input className={classes.inputElement} {...props}/>
             break;
