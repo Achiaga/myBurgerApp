@@ -3,7 +3,7 @@ import Aux from "../../hoc/Aux/Aux";
 import Burger from "../../components/Burger/Burger"
 import BuildControls from "../../components/Burger/BuildControls/BuildControls"
 import Modal from "../../components/UI/Modal/Modal"
-import OrderSummery from "../../components/Burger/OrderSummary/OrderSummery"
+import OrderSummary from "../../components/Burger/OrderSummary/OrderSummary"
 import Background from "../../components/UI/Background/Background"
 import axios from "../../axios-orders"
 import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler"
@@ -128,7 +128,7 @@ class BurgerBuilder extends Component {
                 </Aux> 
             );
 
-            orderSummary = <OrderSummery 
+            orderSummary = <OrderSummary 
                 ingredients={this.props.ings} 
                 purchaseCancelled={this.purchaseCancelHandler}
                 purchaseContinued={this.purchaseContinueHandler}
@@ -148,9 +148,9 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice,
-        error: state.error
+        ings: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalPrice,
+        error: state.burgerBuilder.error
     }
 }
 
