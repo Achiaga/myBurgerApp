@@ -37,6 +37,13 @@ export const checkAuthTimeOut = (expirationTime) => {
     }
 }
 
+export const setAuthRedirectPath = (path) => {
+    return {
+        type: actionTypes.AUTH_REDIRECT_PATH,
+        path: path
+    }
+}
+
 // holding the Asynchron code & doing the authentication
 
 export const auth = (email, password, isSignup) => {
