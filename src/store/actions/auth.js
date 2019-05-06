@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes"
-import axios from "axios"
+import axios from "axios";
+
 
 export const authStart = () => {
     return {
@@ -22,7 +23,7 @@ export const authFail = (error) => {
     }
 }
 
-export const logOut = () => {
+export const logout = () => {
     return {
         type: actionTypes.AUTH_LOGOUT,
     }
@@ -31,7 +32,7 @@ export const logOut = () => {
 export const checkAuthTimeOut = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
-            dispatch(logOut())
+            dispatch(logout())
         }, expirationTime * 1000)
     }
 }
